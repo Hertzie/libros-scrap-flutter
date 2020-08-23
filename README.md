@@ -1,6 +1,6 @@
 # libros
 
-A new Flutter project.
+App Flutter para la visualización, búsqueda y agenda de favoritos acerca de libros obtenidos mediante web scraping con Node.js
 
 ## Getting Started
 
