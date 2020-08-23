@@ -35,25 +35,24 @@ class _LibroPageState extends State<LibroPage> {
               setState(() {
                 widget.libro.isFavorito = !widget.libro.isFavorito;
               });
-              _mostrarToastAgregado();
+              _mostrarToastFavoritos();
             })
         ],
       ),
-      body: Center(
-        child: Card(
-          child: Column(
-            children: <Widget>[
-              ListTile(
-
-              )
-            ],
-          ),
+      body: Container(
+        padding: EdgeInsets.only(top: 15.0),
+        child: Column(
+          children: <Widget>[
+            Image.network(widget.libro.imagen, width: 500.0, height: 150.0,),
+            Text(widget.libro.categoria.toUpperCase(), style: TextStyle(color: Colors.indigoAccent)),
+            Text(widget.libro.descripcion, style: TextStyle(fontSize: 12.0))
+          ]
         ),
-      ),
+      )
     );
   }
 
-  _mostrarToastAgregado(){
+  _mostrarToastFavoritos(){
     String mensaje = widget.libro.isFavorito 
                      ? 'Agregado a favoritos.' 
                      : 'Removido de favoritos';
