@@ -55,6 +55,8 @@ class _HomePageState extends State<HomePage>{
     List<dynamic> data = jsonContent['data'];
     libros = data.map((e) => Libro.mapFromJson(e)).toList();
     categoriasState = categorias.map((e) => e.toString()).toList();
+    categoriasState.sort();
+    categoriasState = categoriasState.map((e) => e.toUpperCase()).toList();
     categoriasState.insert(0, 'TODOS');
     
     return libros;
@@ -147,7 +149,7 @@ class _HomePageState extends State<HomePage>{
 
   void _filtrarLibrosPorCategoria(String categoria){
     setState(() {
-      librosFiltrados = categoria == 'TODOS' ? libros : libros.where((libro) => libro.categoria == categoria).toList();
+      librosFiltrados = categoria == 'TODOS' ? libros : libros.where((libro) => libro.categoria.toUpperCase() == categoria).toList();
     });
   }
 
@@ -170,15 +172,15 @@ class _HomePageState extends State<HomePage>{
         child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-            Icon(Icons.priority_high),
+            Icon(Icons.priority_high, color: Colors.white),
             SizedBox(
             width: 12.0,
             ),
-            Text('Seleccione una categoría.'),
+            Text('Seleccione una categoría.', style: TextStyle(color: Colors.white)),
         ],
         ),
     );
-    
+
     FToast fToast = FToast(context);
 
     fToast.showToast(
